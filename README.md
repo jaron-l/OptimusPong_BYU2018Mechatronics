@@ -1,2 +1,4 @@
 # OptimusPong_BYU2018Mechatronics
 Code Files for BYU 2018 Mechatronics class for the Optimus Pong team 
+
+Description: The objective of this robot is to shoot ping pong balls in designated goals autonomously. The basic format of the arena is a ceiling-less box with a dispensor of ping pong balls in one corner. A laser must be interrupted to obtain one ping pong ball. The ping pong balls have a 33% chance of being black or white. The other three corners will have cutouts a certain distance above ground level in which ping pong balls must be placed or shot into. At any point in time, the black ping pong balls must go into the black goal as indicated by an IR light above that goal while the other two goals will be for white balls. A score is generated based on the number of correctly placaed/shot ping pong balls.
