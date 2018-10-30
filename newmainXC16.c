@@ -8,14 +8,43 @@
 
 #include "xc.h
 #pragma config FNOSC = FRC
+int counter = 0;
+
+void _ISR _OC1Interrupt(void){
+    _OC1IF = 0;
+    counter++;
+}
+
+void delay(float time){//Assumes an 8 MHz clock, time is in seconds
+  int beats = 0;
+  while(beats<time*4000){//multiply time by Hz/2 of clock
+    beats++;
+  }
+}
+
+//Experimental clock query to make time independant of clock source
+void smartDelay(float time){ //time in seconds
+  int currClock = COSC;
+  int beats = 0;
+  if(currClock == 0b000){//8MHz clock
+    while(beats<time*4000){//for each clock type, simply multiply time by Hz/2
+      beats++;
+    }
+  }
+  if(currClock == 0b111){//8MHz clock with 1:64 divider
+    while(beats<time*62.5){//for each clock type, simply multiply time by Hz/2
+      beats++;
+    }
+  }
+}
 
 int main(void) {
-  //Set Pin 2 & 3 for Dicection Output
- _ANSA0 = 0;
- _TRISA0 = 0;
- _ANSA1 = 0;
- _TRISA1 = 0;
+  _TRISA6 = 0; //Direction for Wheel 1
+  _ANSA6 = 0;
+  _TRISB2 = 0; //Direction for Wheel 2
+  _ANSB2 = 0;
 
+  counter = 0;
 
  //-----------------------------------------------------------
  // CONFIGURE PWM1 USING OC1 & OC2 (on pin 14 & 4 respectively)
@@ -23,6 +52,9 @@ int main(void) {
  // Clear control bits initially
  OC2CON1 = 0;
  OC2CON2 = 0;
+
+ OC1CON1 = 0;
+ OC1CON2 = 0;
 
 
  // Set period and duty cycle
@@ -49,25 +81,37 @@ int main(void) {
 
  while(1){
 
-
      //full turn (400)
      while(counter >= 0 && counter < 800){
-         _LATA1 = 1;
-         _LATA0 = 1;
+         _LATA6 = 1; //Assuming 1 is forward
+         _LATB2 = 1;
      }
+
+     OC2R = 0;
+     OC1R = 0;
+     delay(1.0);
+     OC2R = 1;
+     OC1R = 1;
 
      //45 degree turn - Depends on Wheel size (100*D/d)
      //D-diameter from center of wheel to center of wheel
      //d-diameter of wheel
+     //Will be less because both wheels?
      while(counter >= 800 && counter < ???){
-         _LATA1 = 0;
-         _LATA0 = 1;
+         _LATA6 = 0;
+         _LATB2 = 1;
      }
+
+     OC2R = 0;
+     OC1R = 0;
+     delay(1.0);
+     OC2R = 1;
+     OC1R = 1;
 
      //Drive forward again
      while(counter >= ??? && counter < 2000){
-         _LATA1 = 1;
-         _LATA0 = 1;
+         _LATA6 = 1;
+         _LATB2 = 1;
      }
 
      //Stop
@@ -75,6 +119,5 @@ int main(void) {
          OC2R = 0;
          OC1R = 0;
      }
-
     return 0;
 }
