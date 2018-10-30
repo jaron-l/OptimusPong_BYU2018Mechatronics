@@ -6,7 +6,8 @@
  */
 
 
-#include "xc.h"
+#include "xc.h
+#pragma config FNOSC = FRC
 
 int main(void) {
   //Set Pin 2 & 3 for Dicection Output
