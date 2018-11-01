@@ -22,22 +22,24 @@ void delay(float time){//Assumes an 8 MHz clock, time is in seconds
   }
 }
 
+//builds but has not been tested nor implemented
 //Experimental clock query to make time independant of clock source
-//void smartDelay(float time){ //time in seconds
-//  int currClock = _COSC;
-//  int beats = 0;
-//  if(currClock == 0b000){//8MHz clock
-//    while(beats<time*4000){//for each clock type, simply multiply time by Hz/2
-//      beats++;
-//    }
-//  }
-//  if(currClock == 0b111){//8MHz clock with 1:64 divider
-//    while(beats<time*62.5){//for each clock type, simply multiply time by Hz/2
-//      beats++;
-//    }
-//  }
-//}
+void smartDelay(float time){ //time in seconds
+  int currClock = _COSC;
+  int beats = 0;
+  if(currClock == 0b000){//8MHz clock
+    while(beats<time*4000){//for each clock type, simply multiply time by Hz/2
+      beats++;
+    }
+  }
+  if(currClock == 0b111){//8MHz clock with 1:64 divider
+    while(beats<time*62.5){//for each clock type, simply multiply time by Hz/2
+      beats++;
+    }
+  }
+}
 
+//builds but has not been tested nor implemented
 //Function that will ramp to a duty cycle
 void rampPWM(int oc_switch, float goal_duty_cycle){
     if(oc_switch == 1){

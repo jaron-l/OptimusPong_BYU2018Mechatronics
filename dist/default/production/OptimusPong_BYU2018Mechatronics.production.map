@@ -83,10 +83,10 @@ xc16-ld 1.35 (A)
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x2fa           0x477  (1143)
-.text                        0x4fa               0x21c           0x32a  (810)
-.dinit                       0x716                 0x8             0xc  (12)
+.text                        0x4fa               0x298           0x3e4  (996)
+.dinit                       0x792                 0x8             0xc  (12)
 
-                 Total "program" memory used (bytes):          0x7ad  (1965) 12%
+                 Total "program" memory used (bytes):          0x867  (2151) 13%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x800]
@@ -141,8 +141,9 @@ External Symbols in Program Memory (by address):
                   0x0004ec                  __fbopExit
                   0x0004f4                  __fbopReturnNaN
                   0x0004fa                  _delay
-                  0x000538                  _rampPWM
-                  0x000648                  _main
+                  0x000538                  _smartDelay
+                  0x0005b4                  _rampPWM
+                  0x0006c4                  _main
 
 External Symbols in Program Memory (by name):
 
@@ -169,8 +170,9 @@ External Symbols in Program Memory (by name):
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
                   0x0004fa                  _delay
-                  0x000648                  _main
-                  0x000538                  _rampPWM
+                  0x0006c4                  _main
+                  0x0005b4                  _rampPWM
+                  0x000538                  _smartDelay
 
 Memory Configuration
 
@@ -314,26 +316,26 @@ __FDS
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1154
+.debug_info       0x000000       0x1339
  *(.debug_info)
- .debug_info      0x000000       0x1154 build/default/production/newmainXC16.o
+ .debug_info      0x000000       0x1339 build/default/production/newmainXC16.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x16b
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x16b build/default/production/newmainXC16.o
 
-.debug_line       0x000000        0x15c
+.debug_line       0x000000        0x16a
  *(.debug_line)
- .debug_line      0x000000        0x15c build/default/production/newmainXC16.o
+ .debug_line      0x000000        0x16a build/default/production/newmainXC16.o
 
-.debug_frame      0x000000         0x9a
+.debug_frame      0x000000         0xbe
  *(.debug_frame)
- .debug_frame     0x000000         0x9a build/default/production/newmainXC16.o
+ .debug_frame     0x000000         0xbe build/default/production/newmainXC16.o
 
-.debug_str        0x000000         0xaf
+.debug_str        0x000000         0xba
  *(.debug_str)
- .debug_str       0x000000         0xaf build/default/production/newmainXC16.o
+ .debug_str       0x000000         0xba build/default/production/newmainXC16.o
 
 .debug_loc
  *(.debug_loc)
@@ -342,10 +344,10 @@ __FDS
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x4f
+                  0x000000         0x5e
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x4f build/default/production/newmainXC16.o
+                  0x000000         0x5e build/default/production/newmainXC16.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -973,42 +975,42 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000018        0x13e
+                  0x000018        0x15f
  .debug_pubtypes
-                  0x000018        0x13e build/default/production/newmainXC16.o
+                  0x000018        0x15f build/default/production/newmainXC16.o
 
 __c30_signature
-                  0x000156         0x5a
+                  0x000177         0x5a
  __c30_signature
-                  0x000156          0x6 build/default/production/newmainXC16.o
+                  0x000177          0x6 build/default/production/newmainXC16.o
  __c30_signature
-                  0x00015c          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
+                  0x00017d          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000162          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
+                  0x000183          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x000168          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(feqltle.eo)
+                  0x000189          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(feqltle.eo)
  __c30_signature
-                  0x00016e          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
+                  0x00018f          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
  __c30_signature
-                  0x000174          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
+                  0x000195          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
  __c30_signature
-                  0x00017a          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+                  0x00019b          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
  __c30_signature
-                  0x000180          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                  0x0001a1          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(funpack.eo)
  __c30_signature
-                  0x000186          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+                  0x0001a7          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
  __c30_signature
-                  0x00018c          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fcompare.eo)
+                  0x0001ad          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fcompare.eo)
  __c30_signature
-                  0x000192          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
+                  0x0001b3          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
  __c30_signature
-                  0x000198          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                  0x0001b9          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
  __c30_signature
-                  0x00019e          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                  0x0001bf          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fpack.eo)
  __c30_signature
-                  0x0001a4          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                  0x0001c5          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(funpack2.eo)
  __c30_signature
-                  0x0001aa          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x0001cb          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(futil.eo)
 
 .nbss               0x0800          0x2
  .nbss              0x0800          0x2 build/default/production/newmainXC16.o
@@ -1022,11 +1024,12 @@ __c30_signature
  .ivt._OC1Interrupt
                   0x000018          0x2 build/default/production/newmainXC16.o
 
-.text             0x0004fa        0x21c
- .text            0x0004fa        0x21c build/default/production/newmainXC16.o
+.text             0x0004fa        0x298
+ .text            0x0004fa        0x298 build/default/production/newmainXC16.o
                   0x0004fa                  _delay
-                  0x000538                  _rampPWM
-                  0x000648                  _main
+                  0x000538                  _smartDelay
+                  0x0005b4                  _rampPWM
+                  0x0006c4                  _main
 
-.dinit            0x000716          0x8
- .dinit           0x000716          0x8 data_init
+.dinit            0x000792          0x8
+ .dinit           0x000792          0x8 data_init
