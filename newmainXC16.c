@@ -6,7 +6,7 @@
  */
 
 
-#include "xc.h
+#include "xc.h"
 #pragma config FNOSC = FRC
 int counter = 0;
 
@@ -23,24 +23,23 @@ void delay(float time){//Assumes an 8 MHz clock, time is in seconds
 }
 
 //Experimental clock query to make time independant of clock source
-void smartDelay(float time){ //time in seconds
-  int currClock = COSC;
-  int beats = 0;
-  if(currClock == 0b000){//8MHz clock
-    while(beats<time*4000){//for each clock type, simply multiply time by Hz/2
-      beats++;
-    }
-  }
-  if(currClock == 0b111){//8MHz clock with 1:64 divider
-    while(beats<time*62.5){//for each clock type, simply multiply time by Hz/2
-      beats++;
-    }
-  }
-}
+//void smartDelay(float time){ //time in seconds
+//  int currClock = _COSC;
+//  int beats = 0;
+//  if(currClock == 0b000){//8MHz clock
+//    while(beats<time*4000){//for each clock type, simply multiply time by Hz/2
+//      beats++;
+//    }
+//  }
+//  if(currClock == 0b111){//8MHz clock with 1:64 divider
+//    while(beats<time*62.5){//for each clock type, simply multiply time by Hz/2
+//      beats++;
+//    }
+//  }
+//}
 
 int main(void) {
-  _TRISA6 = 0; //Direction for Wheel 1
-  _ANSA6 = 0;
+  _TRISB12 = 0; //Direction for Wheel 1 with no analog definition
   _TRISB2 = 0; //Direction for Wheel 2
   _ANSB2 = 0;
 
@@ -58,11 +57,11 @@ int main(void) {
 
 
  // Set period and duty cycle
- OC1R = 16000;
- OC2R = 16000;
+ OC1R = 4000;
+ OC2R = 4000;
 
- OC1RS = 31999;
- OC2RS = 31999;
+ OC1RS = 7999;
+ OC2RS = 7999;
 
  // Configure OC1 & OC2
  OC1CON1bits.OCTSEL = 0b111;
@@ -77,47 +76,50 @@ int main(void) {
  OC2CON1bits.OCM = 0b110;
 
  _OC1IE = 1;
- _OC2IE = 1;
 
  while(1){
-
+     counter = 0;
      //full turn (400)
+     
+     //forward
      while(counter >= 0 && counter < 800){
-         _LATA6 = 1; //Assuming 1 is forward
+         _LATB12 = 1; //Assuming 1 is forward
          _LATB2 = 1;
      }
 
      OC2R = 0;
      OC1R = 0;
-     delay(1.0);
-     OC2R = 1;
-     OC1R = 1;
+     delay(.25);
+     OC2R = 4000;
+     OC1R = 4000;
 
      //45 degree turn - Depends on Wheel size (100*D/d)
      //D-diameter from center of wheel to center of wheel
      //d-diameter of wheel
      //Will be less because both wheels?
-     while(counter >= 800 && counter < ???){
-         _LATA6 = 0;
+     while(counter >= 800 && counter < 1100){
+         _LATB12 = 0;
          _LATB2 = 1;
      }
 
      OC2R = 0;
      OC1R = 0;
-     delay(1.0);
-     OC2R = 1;
-     OC1R = 1;
+     delay(.25);
+     OC2R = 4000;
+     OC1R = 4000;
 
      //Drive forward again
-     while(counter >= ??? && counter < 2000){
-         _LATA6 = 1;
+     while(counter >= 1100 && counter < 1900){
+         _LATB12 = 1;
          _LATB2 = 1;
      }
 
      //Stop
-     if(counter>2000){
-         OC2R = 0;
-         OC1R = 0;
-     }
+    OC2R = 0;
+    OC1R = 0;
+    
+    delay(5.0);
+    
     return 0;
+}
 }
