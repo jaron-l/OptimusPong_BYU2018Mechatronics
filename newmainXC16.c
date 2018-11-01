@@ -38,6 +38,46 @@ void delay(float time){//Assumes an 8 MHz clock, time is in seconds
 //  }
 //}
 
+//Function that will ramp to a duty cycle
+void rampPWM(int oc_switch, float goal_duty_cycle){
+    if(oc_switch == 1){
+        int rate =  OC1RS/8;// ramp rate in OC1R per .5 seconds
+        int ocr_goal = goal_duty_cycle * OC1RS;
+        while(ocr_goal - OC1R > rate - 1){
+            OC1R += rate;
+            delay(.5);
+        }
+        while(OC1R - ocr_goal > rate - 1){
+            OC1R -= rate;
+            delay(.5);
+        }
+    }
+    if(oc_switch == 2){
+        int rate =  OC2RS/8;// ramp rate in OC1R per .5 seconds
+        int ocr_goal = goal_duty_cycle * OC2RS;
+        while(ocr_goal - OC2R > rate - 1){
+            OC2R += rate;
+            delay(.5);
+        }
+        while(OC2R - ocr_goal > rate - 1){
+            OC2R -= rate;
+            delay(.5);
+        }
+    }
+    if(oc_switch == 3){
+        int rate =  OC3RS/8;// ramp rate in OC1R per .5 seconds
+        int ocr_goal = goal_duty_cycle * OC3RS;
+        while(ocr_goal - OC3R > rate - 1){
+            OC3R += rate;
+            delay(.5);
+        }
+        while(OC3R - ocr_goal > rate - 1){
+            OC3R -= rate;
+            delay(.5);
+        }
+    }
+}
+
 int main(void) {
   _TRISB12 = 0; //Direction for Wheel 1 with no analog definition
   _TRISB2 = 0; //Direction for Wheel 2
