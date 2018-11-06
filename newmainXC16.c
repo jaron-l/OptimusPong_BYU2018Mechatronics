@@ -32,53 +32,69 @@ void smartDelay(float time){ //time in seconds
 }
 
 //Function that will ramp to a duty cycle
-void rampPWM(int oc_switch, float goal_duty_cycle){
+//runs but I realized that the OCxR doesn't control how fast it is going. What controls that is OCxRS
+void rampPWM(int oc_switch, int goal_ocrs){
     if(oc_switch == 1){
         int rate =  OC1RS/4;// ramp rate in OC1R per .5 seconds
-        int ocr_goal = goal_duty_cycle * OC1RS;
-        if(ocr_goal > OC1R){
-            while((ocr_goal - OC1R) > (rate - 1)){
-                OC1R += rate;
+        if(goal_ocrs > OC1RS){
+            while((goal_ocrs - OC1RS) > (rate - 1)){
+                OC1RS += rate;
+                OC1R = int(.5 * OC1RS);
                 smartDelay(.5);
             }
+            OC1RS = goal_ocrs;
+            OC1R = int(.5 * OC1RS);
         }
         else{
-            while(OC1R - ocr_goal > rate - 1){
-                OC1R -= rate;
+            while((OC1RS - goal_ocrs) > (rate - 1)){
+                OC1RS -= rate;
+                OC1R = int(.5 * OC1RS);
                 smartDelay(.5);
             }
+            OC1RS = goal_ocrs;
+            OC1R = int(.5 * OC1RS);
         }
     }
     else if(oc_switch == 2){
-        int rate =  OC2RS/8;// ramp rate in OC1R per .5 seconds
-        int ocr_goal = goal_duty_cycle * OC2RS;
-        if(ocr_goal > OC2R){
-            while(ocr_goal - OC2R > rate - 1){
-                OC2R += rate;
+        int rate =  OC2RS/4;// ramp rate in OC1R per .5 seconds
+        if(goal_ocrs > OC2RS){
+            while((goal_ocrs - OC2RS) > (rate - 1)){
+                OC2RS += rate;
+                OC2R = int(.5 * OC2RS);
                 smartDelay(.5);
             }
+            OC2RS = goal_ocrs;
+            OC2R = int(.5 * OC2RS);
         }
         else{
-            while(OC2R - ocr_goal > rate - 1){
-                OC2R -= rate;
+            while((OC2RS - goal_ocrs) > (rate - 1)){
+                OC2RS -= rate;
+                OC2R = int(.5 * OC2RS);
                 smartDelay(.5);
             }
+            OC2RS = goal_ocrs;
+            OC2R = int(.5 * OC2RS);
         }
     }
-    else if(oc_switch == 3){
-        int rate =  OC3RS/8;// ramp rate in OC1R per .5 seconds
-        int ocr_goal = goal_duty_cycle * OC3RS;
-        if(ocr_goal > OC2R){
-            while(ocr_goal - OC3R > rate - 1){
-                OC3R += rate;
+    else{
+        int rate =  OC3RS/4;// ramp rate in OC1R per .5 seconds
+        if(goal_ocrs > OC3RS){
+            while((goal_ocrs - OC3RS) > (rate - 1)){
+                OC3RS += rate;
+                OC3R = int(.5 * OC3RS);
                 smartDelay(.5);
             }
+            OC3RS = goal_ocrs;
+            OC3R = int(.5 * OC3RS);
         }
         else{
-            while(OC3R - ocr_goal > rate - 1){
-                OC3R -= rate;
+            while((OC3RS - goal_ocrs) > (rate - 1)){
+                OC3RS -= rate;
+                OC3R = int(.5 * OC3RS);
                 smartDelay(.5);
             }
+            OC3RS = goal_ocrs;
+            OC3R = int(.5 * OC3RS);
         }
     }
 }
@@ -114,14 +130,14 @@ int main(void) {
  while(1){
      counter = 0;
      _LATB12 = 1; //Forward
-     rampPWM(1,.5);
+     rampPWM(1,7999);
      
      while(counter >= 0 && counter < 800);
 
      rampPWM(1,0);
      smartDelay(1);
      _LATB12 = 0;
-     rampPWM(1,.5);
+     rampPWM(1,7999);
 
      //45 degree turn - Depends on Wheel size (100*D/d)
      //D-diameter from center of wheel to center of wheel
@@ -132,7 +148,7 @@ int main(void) {
      rampPWM(1,0);
      smartDelay(1);
      _LATB12 = 1;
-     rampPWM(1,.5);
+     rampPWM(1,7999);
 
      //Drive forward again
      while(counter >= 1100 && counter < 1900);
