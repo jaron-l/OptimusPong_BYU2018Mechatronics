@@ -13,6 +13,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>newmainXC16.c</itemPath>
+      <itemPath>default_setup.h</itemPath>
+      <itemPath>Nav_func.h</itemPath>
+      <itemPath>shooting.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
