@@ -85,11 +85,11 @@ xc16-ld 1.35 (A)
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x31e           0x4ad  (1197)
-.text                        0x51e               0x3b2           0x58b  (1419)
-.init.delay32                0x8d0                0x1c            0x2a  (42)
-.dinit                       0x8ec                0x18            0x24  (36)
+.text                        0x51e               0x464           0x696  (1686)
+.init.delay32                0x982                0x1c            0x2a  (42)
+.dinit                       0x99e                0x18            0x24  (36)
 
-                 Total "program" memory used (bytes):          0xa86  (2694) 16%
+                 Total "program" memory used (bytes):          0xb91  (2961) 18%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x800]
@@ -162,23 +162,23 @@ External Symbols in Program Memory (by address):
                   0x000510                  __fbopExit
                   0x000518                  __fbopReturnNaN
                   0x00051e                  _set_up_PWM_and_ADC
-                  0x0005e0                  _set_up_driving_pins
-                  0x00060a                  _init
-                  0x000614                  _rampPWM
-                  0x0006d0                  _drive
-                  0x000760                  _turn
-                  0x0007b4                  _find_corner_and_go_to_center
-                  0x00083e                  _vertical_sort
-                  0x000876                  _detect_black_gate
-                  0x0008b2                  _main
-                  0x0008d0                  ___delay32
+                  0x0005de                  _set_up_driving_pins
+                  0x000614                  _init
+                  0x00061e                  _rampPWM
+                  0x0006da                  _drive
+                  0x00076a                  _turn
+                  0x0007be                  _find_corner_and_go_to_center
+                  0x000838                  _vertical_sort
+                  0x000870                  _detect_black_gate
+                  0x0008ac                  _main
+                  0x000982                  ___delay32
 
 External Symbols in Program Memory (by name):
 
                   0x0002e2                  __CNInterrupt
                   0x000306                  __DefaultInterrupt
                   0x0002c8                  __OC1Interrupt
-                  0x0008d0                  ___delay32
+                  0x000982                  ___delay32
                   0x00030c                  ___eqsf2
                   0x000310                  ___fixsfsi
                   0x000424                  ___floatdisf
@@ -199,16 +199,16 @@ External Symbols in Program Memory (by name):
                   0x0004ee                  __funpack2
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000876                  _detect_black_gate
-                  0x0006d0                  _drive
-                  0x0007b4                  _find_corner_and_go_to_center
-                  0x00060a                  _init
-                  0x0008b2                  _main
-                  0x000614                  _rampPWM
+                  0x000870                  _detect_black_gate
+                  0x0006da                  _drive
+                  0x0007be                  _find_corner_and_go_to_center
+                  0x000614                  _init
+                  0x0008ac                  _main
+                  0x00061e                  _rampPWM
                   0x00051e                  _set_up_PWM_and_ADC
-                  0x0005e0                  _set_up_driving_pins
-                  0x000760                  _turn
-                  0x00083e                  _vertical_sort
+                  0x0005de                  _set_up_driving_pins
+                  0x00076a                  _turn
+                  0x000838                  _vertical_sort
 
 Memory Configuration
 
@@ -353,26 +353,26 @@ __FDS
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x28cd
+.debug_info       0x000000       0x279c
  *(.debug_info)
- .debug_info      0x000000       0x28cd build/default/production/newmainXC16.o
+ .debug_info      0x000000       0x279c build/default/production/newmainXC16.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x1b6
+.debug_abbrev     0x000000        0x19f
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x1b6 build/default/production/newmainXC16.o
+ .debug_abbrev    0x000000        0x19f build/default/production/newmainXC16.o
 
-.debug_line       0x000000        0x1fa
+.debug_line       0x000000        0x22d
  *(.debug_line)
- .debug_line      0x000000        0x1fa build/default/production/newmainXC16.o
+ .debug_line      0x000000        0x22d build/default/production/newmainXC16.o
 
 .debug_frame      0x000000        0x180
  *(.debug_frame)
  .debug_frame     0x000000        0x180 build/default/production/newmainXC16.o
 
-.debug_str        0x000000        0x264
+.debug_str        0x000000        0x259
  *(.debug_str)
- .debug_str       0x000000        0x264 build/default/production/newmainXC16.o
+ .debug_str       0x000000        0x259 build/default/production/newmainXC16.o
 
 .debug_loc
  *(.debug_loc)
@@ -1012,44 +1012,44 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000018        0x321
+                  0x000018        0x300
  .debug_pubtypes
-                  0x000018        0x321 build/default/production/newmainXC16.o
+                  0x000018        0x300 build/default/production/newmainXC16.o
 
 __c30_signature
-                  0x000339         0x60
+                  0x000318         0x60
  __c30_signature
-                  0x000339          0x6 build/default/production/newmainXC16.o
+                  0x000318          0x6 build/default/production/newmainXC16.o
  __c30_signature
-                  0x00033f          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
+                  0x00031e          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000345          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
+                  0x000324          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x00034b          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
+                  0x00032a          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
  __c30_signature
-                  0x000351          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(feqltle.eo)
+                  0x000330          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(feqltle.eo)
  __c30_signature
-                  0x000357          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
+                  0x000336          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fixsfsi.eo)
  __c30_signature
-                  0x00035d          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
+                  0x00033c          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatsisf.eo)
  __c30_signature
-                  0x000363          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+                  0x000342          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
  __c30_signature
-                  0x000369          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                  0x000348          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(funpack.eo)
  __c30_signature
-                  0x00036f          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+                  0x00034e          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
  __c30_signature
-                  0x000375          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fcompare.eo)
+                  0x000354          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fcompare.eo)
  __c30_signature
-                  0x00037b          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
+                  0x00035a          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatdisf.eo)
  __c30_signature
-                  0x000381          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                  0x000360          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
  __c30_signature
-                  0x000387          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                  0x000366          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(fpack.eo)
  __c30_signature
-                  0x00038d          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                  0x00036c          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(funpack2.eo)
  __c30_signature
-                  0x000393          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x000372          0x6 c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\libm-elf.a(futil.eo)
 
 .ndata              0x0800          0xe
  .ndata             0x0800          0xe build/default/production/newmainXC16.o
@@ -1079,22 +1079,22 @@ __c30_signature
  .ivt._CNInterrupt
                   0x00003a          0x2 build/default/production/newmainXC16.o
 
-.text             0x00051e        0x3b2
- .text            0x00051e        0x3b2 build/default/production/newmainXC16.o
+.text             0x00051e        0x464
+ .text            0x00051e        0x464 build/default/production/newmainXC16.o
                   0x00051e                  _set_up_PWM_and_ADC
-                  0x0005e0                  _set_up_driving_pins
-                  0x00060a                  _init
-                  0x000614                  _rampPWM
-                  0x0006d0                  _drive
-                  0x000760                  _turn
-                  0x0007b4                  _find_corner_and_go_to_center
-                  0x00083e                  _vertical_sort
-                  0x000876                  _detect_black_gate
-                  0x0008b2                  _main
+                  0x0005de                  _set_up_driving_pins
+                  0x000614                  _init
+                  0x00061e                  _rampPWM
+                  0x0006da                  _drive
+                  0x00076a                  _turn
+                  0x0007be                  _find_corner_and_go_to_center
+                  0x000838                  _vertical_sort
+                  0x000870                  _detect_black_gate
+                  0x0008ac                  _main
 
-.init.delay32     0x0008d0         0x1c
- .init.delay32    0x0008d0         0x1c c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
-                  0x0008d0                  ___delay32
+.init.delay32     0x000982         0x1c
+ .init.delay32    0x000982         0x1c c:/program files (x86)/microchip/xc16/v1.35/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
+                  0x000982                  ___delay32
 
-.dinit            0x0008ec         0x18
- .dinit           0x0008ec         0x18 data_init
+.dinit            0x00099e         0x18
+ .dinit           0x00099e         0x18 data_init

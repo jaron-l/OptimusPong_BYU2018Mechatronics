@@ -129,7 +129,7 @@ void turn(int angle, char direction){
 }
 
 void find_corner_and_go_to_center(void){
-    
+    /**
     //find center
     while(hit_corner_flag == 0){
         RightWheel = 1;
@@ -138,11 +138,16 @@ void find_corner_and_go_to_center(void){
     }
     hit_corner_flag = 0;
     drive('b',2.0);
-    
+    */
+    _LATB12 = 1; //10
+    _LATB2 = 0;
+    __delay_ms(500); //10
     //find orientation
+    wheel_counter = 0;
     LeftWheel = 0;
     RightWheel = 1;
-    rampPWM(speed);
+    _LATB12 = 1;
+    _LATB2 = 1;
     //all IR sensors are low, wait
     while(LeftIR < LeftIRThreshold && MidIR < MidIRThreshold && RightIR < RightIRThreshold);
     //find the IR sensor that went high and determine what to do

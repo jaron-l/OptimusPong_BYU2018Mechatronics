@@ -47,7 +47,7 @@ void set_up_PWM_and_ADC(void){
 
     // Set period and duty cycle
     OC1R = 0;
-    OC1RS = 7999;
+    OC1RS = 0;
     OC2R = 50;
     OC2RS = 1250;
     OC3R = 50;
@@ -134,6 +134,14 @@ void set_up_driving_pins(void){
     _ANSB12 = 0;
     _TRISB2 = 0; //Right Motor direction
     _ANSB2 = 0;
+    
+    //IR Sensors
+    _TRISA0 = 1;
+    _ANSA0 = 1;
+    _TRISA1 = 1;
+    _ANSA1 = 1;
+    _TRISA2 = 1;
+    _ANSA2 = 1;
     
     //Push button pins
     _TRISB8 = 1;
